@@ -9,7 +9,7 @@ import { CharactersService } from '../../services/characters/characters.service'
 export class CharactersComponent implements OnInit {
 
   characters = [];
-  filterCharacters = ''; 
+  filterCharacters = '';
 
   constructor(
     private charactersService: CharactersService
@@ -23,7 +23,6 @@ export class CharactersComponent implements OnInit {
     this.charactersService.getCharacters()
       .subscribe(
         (data) => {
-          console.log(data.characters);
           this.characters = data.characters;
         },
         (error) => {

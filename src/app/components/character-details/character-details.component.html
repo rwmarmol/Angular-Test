@@ -1,1 +1,18 @@
-<p>character-details works!</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3" *ngFor="let character of characters">
+                <div class="card mb-3" routerLink="/character/{{character.id}}">
+                    <img src="../../../assets/img/{{character.id}}.jpg" class="card-img-top" alt="{{character.first_name}}">
+                    <div class="card-body">
+                        <h6 class="card-title mb-0">{{character.first_name}} {{character.last_name}} <span class="badge badge-primary">{{character.condition}}</span></h6>
+                        <p class="card-text mb-0"><small class="text-muted"><b>Birth:</b> {{ character.birth }}</small></p>
+                        <p class="card-text mb-0"><small class="text-muted"><b>Age:</b> {{character.age}} </small></p>
+                        <p class="card-text mb-0"><small class="text-muted"><b>Ocupation:</b> {{character.ocupation}} </small></p>
+                    </div>
+                    <div class="card-footer">
+                        <a routerLink="/" class="btn btn-primary btn-block">Back</a>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

@@ -8,15 +8,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CharactersService {
-  
+
   apiUrl = 'https://demo6086832.mockable.io/characters';
 
   constructor(
-    private _http:HttpClient
+    private http: HttpClient
   ) { }
 
   getCharacters(): Observable<any> {
-    return this._http.get(this.apiUrl).pipe(
+    return this.http.get(this.apiUrl).pipe(
       map((response: Response) => response)
     );
   }

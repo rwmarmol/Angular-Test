@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CharactersService } from '../../services/characters/characters.service';
 
 @Component({
   selector: 'app-character-details',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharacterDetailsComponent implements OnInit {
 
-  constructor() { }
+  public characterID: number;
+  public characters = [];
+
+  constructor(
+    private route: ActivatedRoute,
+    private characterService: CharactersService
+  ) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.characterID = parseInt( id , 0 );
+    this.getCharacter();
+  }
+
+  getCharacter() {
+    this.characterService.getCharacters().subscribe(
+      (data) => {
+        for (const i of data.characters) {
+          if (i.id === this.characterID) {
+            this.characters.push(i);
+          }
+        }
+      }
+    );
   }
 
 }
